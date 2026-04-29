@@ -46,7 +46,7 @@ export default function Contact() {
           <div className="space-y-4 text-lg">
             <p><strong>Beata van Etten</strong></p>
             <p>Telefoon: 06-43106917</p>
-            <p>Email: <a href="mailto:info@lightnsoul.nl" className="text-sage-green hover:underline">info@lightnsoul.nl</a></p>
+            <p>Email: <a href="mailto:info@lightnsoul.com" className="text-sage-green hover:underline">info@lightnsoul.com</a></p>
             <p>Locatie: Loosdrecht</p>
             <p>Sessies: Fysiek of online, in overleg 's avonds en weekenden</p>
           </div>

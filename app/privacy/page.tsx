@@ -35,7 +35,7 @@ export default function Privacy() {
         <h2>Uw rechten</h2>
         <p>
           U heeft het recht om uw gegevens in te zien, te corrigeren of te laten verwijderen.
-          Neem contact met ons op via info@lightnsoul.nl.
+          Neem contact met ons op via info@lightnsoul.com.
         </p>
       </div>
     </div>

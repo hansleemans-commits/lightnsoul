@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Light & Soul - Healing & Astrologie Praktijk",
     description: "Professionele begeleiding voor healing, lichaamswerk en astrologie in Loosdrecht.",
-    url: "https://lightnsoul.nl",
+    url: "https://lightnsoul.com",
     siteName: "Light & Soul",
     locale: "nl_NL",
     type: "website",
@@ -61,8 +61,8 @@ export default function RootLayout({
                 "addressCountry": "NL"
               },
               "telephone": "+31-6-43106917",
-              "email": "info@lightnsoul.nl",
-              "url": "https://lightnsoul.nl",
+              "email": "info@lightnsoul.com",
+              "url": "https://lightnsoul.com",
               "founder": {
                 "@type": "Person",
                 "name": "Beata van Etten"

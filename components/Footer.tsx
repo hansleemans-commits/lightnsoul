@@ -13,7 +13,7 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Contact</h4>
             <p>Beata van Etten</p>
             <p>Tel: 06-43106917</p>
-            <p>Email: info@lightnsoul.nl</p>
+            <p>Email: info@lightnsoul.com</p>
             <p>Loosdrecht</p>
           </div>
           <div>
