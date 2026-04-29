@@ -12,21 +12,28 @@ export default function Home() {
     const email = formData.get('email') as string;
 
     try {
+      console.log('Sending email:', email);
       const response = await fetch('/api/nieuwsbrief', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
 
+      console.log('Response status:', response.status, 'ok:', response.ok);
       const data = await response.json();
+      console.log('Response data:', data);
 
       if (response.ok) {
-        setMessage(data.message);
-        e.currentTarget.reset();
+        setMessage(data.message || 'Bedankt voor je inschrijving!');
+        const form = e.currentTarget as HTMLFormElement;
+        if (form && typeof form.reset === 'function') {
+          form.reset();
+        }
       } else {
         setMessage(data.error || 'Er is iets misgegaan.');
       }
     } catch (error) {
+      console.error('Error in form submission:', error);
       setMessage('Er is iets misgegaan. Probeer het later opnieuw.');
     }
   };
