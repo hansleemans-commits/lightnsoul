@@ -5,10 +5,10 @@ const LAPOSTA_LIST_ID = 'wvi99aan7e'; // Vervang door de daadwerkelijke lijst ID
 
 export async function POST(request: NextRequest) {
   try {
-    const { email } = await request.json();
+    const { firstName, email, birthDate, birthPlace, birthTime } = await request.json();
 
-    if (!email || !email.includes('@')) {
-      return NextResponse.json({ error: 'Ongeldig emailadres' }, { status: 400 });
+    if (!firstName || !email || !email.includes('@') || !birthDate || !birthPlace || !birthTime) {
+      return NextResponse.json({ error: 'Vul je naam, emailadres en geboortegegevens in.' }, { status: 400 });
     }
 
     // Verstuur naar Laposta API

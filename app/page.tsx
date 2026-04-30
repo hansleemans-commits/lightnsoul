@@ -9,14 +9,18 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const email = formData.get('email') as string;
+    const firstName = (formData.get('firstName') as string) || '';
+    const email = (formData.get('email') as string) || '';
+    const birthDate = (formData.get('birthDate') as string) || '';
+    const birthPlace = (formData.get('birthPlace') as string) || '';
+    const birthTime = (formData.get('birthTime') as string) || '';
 
     try {
-      console.log('Sending email:', email);
+      console.log('Sending newsletter data:', { firstName, email, birthDate, birthPlace, birthTime });
       const response = await fetch('/api/nieuwsbrief', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ firstName, email, birthDate, birthPlace, birthTime }),
       });
 
       console.log('Response status:', response.status, 'ok:', response.ok);
@@ -109,16 +113,65 @@ export default function Home() {
       </section>
 
       {/* Newsletter Signup */}
-      <section className="py-16 bg-sage-green text-white text-center rounded-lg p-8">
-        <h2 className="text-3xl font-serif mb-4">Blijf op de hoogte</h2>
-        <p className="mb-8">Schrijf je in voor onze nieuwsbrief voor artikelen en updates.</p>
-        <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
-          <input type="email" name="email" placeholder="Je emailadres" className="w-full p-3 rounded mb-4 bg-white text-black" required />
-          <button type="submit" className="bg-soft-gold text-foreground px-6 py-2 rounded-full hover:bg-white transition-colors">
-            Inschrijven
-          </button>
-          {message && <p className="mt-4 text-white">{message}</p>}
-        </form>
+      <section className="py-16">
+        <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-soft-gold/30 bg-[#f2efe4] p-8 shadow-xl shadow-sage-green/10">
+          <div className="grid gap-8 lg:grid-cols-[1.4fr_0.9fr] items-center">
+            <div className="rounded-[2rem] border border-soft-gold/20 bg-white/80 p-8 shadow-md shadow-sage-green/5">
+              <h2 className="text-3xl font-serif mb-4 text-deep-olive">CADEAU VOOR JOU</h2>
+              <p className="mb-8 text-foreground">
+                Schrijf je in voor mijn nieuwsbrief en ontvang een korte astrologische duiding op basis van jouw geboortedag, geboorteplaats en geboortetijd.
+              </p>
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <input
+                    type="text"
+                    name="firstName"
+                    placeholder="Voornaam"
+                    className="w-full rounded-3xl border border-slate-200 bg-[#f8f4eb] px-4 py-3 text-foreground outline-none transition focus:border-soft-gold focus:ring-2 focus:ring-soft-gold/20"
+                    required
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="E-mailadres"
+                    className="w-full rounded-3xl border border-slate-200 bg-[#f8f4eb] px-4 py-3 text-foreground outline-none transition focus:border-soft-gold focus:ring-2 focus:ring-soft-gold/20"
+                    required
+                  />
+                </div>
+                <div className="grid gap-4 sm:grid-cols-3">
+                  <input
+                    type="date"
+                    name="birthDate"
+                    placeholder="Geboortedag"
+                    className="w-full rounded-3xl border border-slate-200 bg-[#f8f4eb] px-4 py-3 text-foreground outline-none transition focus:border-soft-gold focus:ring-2 focus:ring-soft-gold/20"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="birthPlace"
+                    placeholder="Geboorteplaats"
+                    className="w-full rounded-3xl border border-slate-200 bg-[#f8f4eb] px-4 py-3 text-foreground outline-none transition focus:border-soft-gold focus:ring-2 focus:ring-soft-gold/20"
+                    required
+                  />
+                  <input
+                    type="time"
+                    name="birthTime"
+                    placeholder="Geboortetijd"
+                    className="w-full rounded-3xl border border-slate-200 bg-[#f8f4eb] px-4 py-3 text-foreground outline-none transition focus:border-soft-gold focus:ring-2 focus:ring-soft-gold/20"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full rounded-full bg-soft-gold px-6 py-3 text-deep-olive transition hover:bg-[#c9a850]"
+                >
+                  ONTVANG MIJN DUIDING
+                </button>
+                {message && <p className="mt-4 text-foreground">{message}</p>}
+              </form>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   );
